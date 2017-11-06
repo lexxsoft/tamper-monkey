@@ -15,8 +15,8 @@
 // @grant           GM_setValue
 // @grant           GM_getValue
 // @grant           window.focus
-// @downloadURL     http://localhost:8000/SkelbiuUpdater.user.js
-// @version         40
+// @downloadURL     https://github.com/lexxsoft/tamper-monkey/raw/skelbiu/SkelbiuUpdater.user.js
+// @version         41
 // @run-at          document-end
 // @license         MIT
 // ==/UserScript==
@@ -24,7 +24,7 @@
 // @updateVersion   3
 // @grant           none
 // @run-at          document-start
-// @updateURL       http://localhost:8000/SkelbiuUpdater.meta.js
+// @updateURL       https://github.com/lexxsoft/tamper-monkey/raw/skelbiu/SkelbiuUpdater.meta.js
 
 (function() {
     'use strict';
