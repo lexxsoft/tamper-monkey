@@ -16,7 +16,7 @@
 // @grant           GM_getValue
 // @grant           window.focus
 // @downloadURL     https://github.com/lexxsoft/tamper-monkey/raw/skelbiu/SkelbiuUpdater.user.js
-// @version         41
+// @version         42
 // @run-at          document-end
 // @license         MIT
 // ==/UserScript==
