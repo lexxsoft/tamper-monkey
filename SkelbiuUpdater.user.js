@@ -16,7 +16,7 @@
 // @grant           GM_getValue
 // @grant           window.focus
 // @downloadURL     http://localhost:8000/SkelbiuUpdater.user.js
-// @version         36
+// @version         40
 // @run-at          document-end
 // @license         MIT
 // ==/UserScript==
@@ -38,10 +38,11 @@
         movement = setTimeout(reload, 5*60*1000)
     });
 
-
+    // gather products
     var renewables = [];
-    $('a.renewedAd').each(function(idx,element){
-        var tr = $(this).parents('tr');
+    $('a.renewedAd, a.renewLink').each(function(idx,element){
+        // one item per table row
+        var tr          = $(this).parents('tr');
 
         var item        = {};
         item.title      = tr.find('h2').text();
@@ -51,28 +52,29 @@
         item.fresh      = $(this).css('color') === 'rgb(0, 153, 0)';
         item.renewal    = this;
 
-        console.debug('got links', item);
+        console.debug('got link', item);
         renewables.push(item);
     });
     // console.log(hrefs);
 
+    // filter only stale links and simulate mouse clicks
     renewables.filter(function(item){
         return item.fresh === false;
     }).forEach(function(item){
         console.debug('will be updating', item.title);
 
-        // triggerMouseEvent(item.renewal, "mouseover");
-        // triggerMouseEvent(item.renewal, "mousedown");
-        // triggerMouseEvent(item.renewal, "mouseup");
-        // triggerMouseEvent(item.renewal, "click");
+        triggerMouseEvent(item.renewal, 'mouseover');
+        triggerMouseEvent(item.renewal, 'mousedown');
+        triggerMouseEvent(item.renewal, 'mouseup');
+        triggerMouseEvent(item.renewal, 'click');
     });
 
 
     function triggerMouseEvent(node, eventType)
     {
-        var clickEvent = document.createEvent ('MouseEvents');
-        clickEvent.initEvent (eventType, true, true);
-        node.dispatchEvent (clickEvent);
+        var clickEvent = document.createEvent('MouseEvents');
+        clickEvent.initEvent(eventType, true, true);
+        node.dispatchEvent(clickEvent);
     }
 
     function reload()
