@@ -16,7 +16,7 @@
 // @grant           GM_getValue
 // @grant           window.focus
 // @downloadURL     http://localhost:8000/SkelbiuUpdater.user.js
-// @version         33
+// @version         36
 // @run-at          document-end
 // @license         MIT
 // ==/UserScript==
@@ -31,11 +31,11 @@
     var movement;
 
     // refresh browser window every so often
-    var movement = setTimeout(reload, 1*30*1000);
+    var movement = setTimeout(reload, 5*60*1000);
     $(document).on('mousemove', function(){
         if (movement)
             movement = clearTimeout(movement);
-        movement = setTimeout(reload, 1*30*1000)
+        movement = setTimeout(reload, 5*60*1000)
     });
 
 
@@ -57,7 +57,7 @@
     // console.log(hrefs);
 
     renewables.filter(function(item){
-        return item.fresh === true;
+        return item.fresh === false;
     }).forEach(function(item){
         console.debug('will be updating', item.title);
 
